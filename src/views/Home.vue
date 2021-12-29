@@ -5,7 +5,7 @@
       Überstunden sowie ihr Abmeldezeit berechnen.
     </div>
 
-    <div>
+    <div class="w-full px-5">
       <div
         class="flex w-full flex-row mt-2"
         v-for="item in items"
@@ -34,12 +34,14 @@
 </template>
 
 <script>
+import * as transform from "../util/transformators.js";
+import standardTime from "../util/timeFunctions.js"
 export default {
   name: "Home",
   data() {
     return {
       items: [
-        { id: 1, label: "Arbeitsbeginn", type: "time", value: "08:00" },
+        { id: 1, label: "Arbeitsbeginn", type: "time", value: "07:00" },
         {
           id: 2,
           label: "Aktuelle Überstunden",
@@ -49,19 +51,14 @@ export default {
         },
         {
           id: 3,
-          label: "Arbeitszeit Wöchentlich, Soll",
+          label: "Netto-Arbeitszeit (Wöchentlich, Soll)",
           type: "number",
           value: 40,
           step: "0.5",
+          min: "1",
+          max: "48"
         },
         { id: 4, label: "Pause", type: "time", value: "00:30" },
-        {
-          id: 5,
-          label: "Gewünschte Überstunden",
-          type: "number",
-          value: 0,
-          step: "0.25",
-        },
         {
           id: 6,
           label: "Gewünschte Abmeldezeit",
@@ -71,39 +68,39 @@ export default {
       ],
       fields: [
         { key: "label", label: "" },
-        { key: "value1", label: "30 Min Pause" },
-        { key: "value2", label: "45 Min Pause" },
-        { key: "value3", label: "15 Min Pause" },
-        { key: "value4", label: "Keine Pause" },
+        { key: "value1", label: "Angaben" },
+        // { key: "value2", label: "45 Min Pause" },
+        // { key: "value3", label: "15 Min Pause" },
+        // { key: "value4", label: "Keine Pause" },
       ],
     };
   },
   computed: {
     getCalculatedValues: function () {
-      const workingTimePerDayIst = this.getWorkingTimePerDayIst();
+      const standard = new standardTime(this.items[0].value, this.items[1].value, this.items[2].value, this.items[3].value, this.items[4].value)
       return [
-        { label: "Arbeitsbeginn", value1: this.items[0].value },
-        { label: "Aktuelle Überstunden", value1: this.items[1].value },
+        { label: "Arbeitsbeginn", value1: standard.startTime },
+        { label: "Aktuelle Überstunden", value1: standard.actualOvertime },
         {
-          label: "Arbeitszeit (Täglich, Soll)",
-          value1: this.getWorkingTimePerDaySoll(),
+          label: "Netto-Arbeitszeit (Täglich, Soll)",
+          value1: standard.workingTimeDailySoll,
         },
         {
-          label: "Arbeitszeit (Täglich, Ist)",
-          value1: workingTimePerDayIst,
-          value2: workingTimePerDayIst,
-          value3: workingTimePerDayIst,
-          value4: workingTimePerDayIst,
-        },
-        {
-          label: "Pausenzeit",
-          value1: 0,
+          label: "Netto-Arbeitszeit (Täglich, Ist)",
+          value1: standard.workingTimeDailyIstNetto,
           value2: 0,
           value3: 0,
           value4: 0,
         },
         {
-          label: "Zu leistende Überstunden",
+          label: "Pausenzeit",
+          value1: standard.pause,
+          value2: 0,
+          value3: 0,
+          value4: 0,
+        },
+        {
+          label: "Geleistete Überstunden",
           value1: 0,
           value2: 0,
           value3: 0,
@@ -111,7 +108,7 @@ export default {
         },
         {
           label: "Arbeitsende",
-          value1: 0,
+          value1: this.items[4].value,
           value2: 0,
           value3: 0,
           value4: 0,
@@ -127,18 +124,15 @@ export default {
     },
   },
   methods: {
-    // Functions for transforming values
-    getTimeToNumber: function (string) {
-      return parseInt(string.substr(0, 2)) + parseInt(string.substr(3, 2)) / 60;
-    },
     // Functions for calculating values
     getWorkingTimePerDaySoll: function () {
       return this.items[2].value / 5;
     },
     getWorkingTimePerDayIst: function () {
-      const start = this.getTimeToNumber(this.items[0].value);
-      const end = this.getTimeToNumber(this.items[5].value);
-      return (end - start).toFixed(2);
+      const start = transform.timeToNumber(this.items[0].value);
+      const pause = transform.timeToNumber(this.items[3].value);
+      const end = transform.timeToNumber(this.items[4].value);
+      return (end - start - pause).toFixed(2);
     },
   },
 };
