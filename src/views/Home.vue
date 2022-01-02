@@ -12,7 +12,7 @@
         :key="item.id"
       >
         <div class="flex w-1/2 flex-wrap content-center justify-center mr-2">
-          <div class="">
+          <div v-b-tooltip.hover :title="item.tooltip">
             {{ item.label }}
           </div>
         </div>
@@ -29,9 +29,15 @@
 
     <br />
     <div id="output" class="max-w-2xl w-full px-3">
-      <b-table :items="getCalculatedValues" :fields="fields" table-class="white">
-        <template #cell(label)="data">
-          <div class="font-bold">{{ data.value }}</div>
+      <b-table
+        :items="getCalculatedValues"
+        :fields="fields"
+        table-class="white"
+      >
+        <template v-slot:cell(newLabel)="data">
+          <div class="font-bold" v-b-tooltip.hover :title="data.item.tooltip">
+            {{ data.item.label }}
+          </div>
         </template>
       </b-table>
     </div>
@@ -49,6 +55,8 @@ export default {
         {
           id: 2,
           label: "Aktuelle Überstunden",
+          tooltip:
+            "Die Anzahl an Überstunden, die man zu Beginn des Tages gesammelt hat.",
           type: "number",
           value: null,
           placeholder: "0",
@@ -56,7 +64,8 @@ export default {
         },
         {
           id: 3,
-          label: "Netto-Arbeitszeit (Wöchentlich, Soll)",
+          label: "Soll-Arbeitszeit (Wöchentlich)",
+          tooltip: "Netto-Arbeitszeit (Wöchentlich, Soll)",
           type: "number",
           value: 40,
           placeholder: "38,5",
@@ -73,13 +82,13 @@ export default {
         },
         {
           id: 6,
-          label: "Gewünschte Abmeldezeit",
+          label: "Abmelden um",
           type: "time",
           value: "16:30",
         },
       ],
       fields: [
-        { key: "label", label: "" },
+        { key: "newLabel", label: "" },
         { key: "value1", label: "Zeiten" },
         // { key: "value2", label: "45 Min Pause" },
         // { key: "value3", label: "15 Min Pause" },
@@ -98,13 +107,20 @@ export default {
       );
       return [
         { label: "Arbeitsbeginn", value1: standard.startTime },
-        { label: "Aktuelle Überstunden", value1: standard.actualOvertime },
         {
-          label: "Netto-Arbeitszeit (Täglich, Soll)",
+          label: "Aktuelle Überstunden",
+          tooltip:
+            "Die Anzahl an Überstunden, die man zu Beginn des Tages gesammelt hat.",
+          value1: standard.actualOvertime,
+        },
+        {
+          label: "Soll-Arbeitszeit",
+          tooltip: "Netto-Arbeitszeit (Täglich, Soll)",
           value1: standard.workingTimeDailySoll,
         },
         {
-          label: "Netto-Arbeitszeit (Täglich, Ist)",
+          label: "Ist-Arbeitszeit",
+          tooltip: "Netto-Arbeitszeit (Täglich, Ist)",
           value1: standard.workingTimeDailyIstNetto,
           value2: 0,
           value3: 0,
@@ -118,7 +134,8 @@ export default {
           value4: 0,
         },
         {
-          label: "Geleistete Überstunden",
+          label: "Überstunden",
+          tooltip: "Die Überstunden, die heute geleistet wurden.",
           value1: standard.doneOvertime,
           value2: 0,
           value3: 0,
@@ -132,7 +149,7 @@ export default {
           value4: 0,
         },
         {
-          label: "Endstand der Überstunden",
+          label: "Gesamte Überstunden",
           value1: standard.overtime,
           value2: 0,
           value3: 0,
@@ -141,7 +158,6 @@ export default {
       ];
     },
   },
-  methods: {
-  },
+  methods: {},
 };
 </script>
