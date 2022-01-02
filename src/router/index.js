@@ -10,6 +10,21 @@ const routes = [
     name: 'Home',
     component: Home
   },
+  {
+    path: '/impressum',
+    name: 'Impressum',
+    component: () => import('../views/Impressum.vue')
+  },
+  {
+    path: '/privacyPolicy',
+    name: 'Datenschutzerklärung',
+    component: () => import('../views/PrivacyPolicy.vue')
+  },
+  {
+    path: '/about',
+    name: 'Über AZ-Rechner',
+    component: () => import('../views/About.vue')
+  }
 ]
 
 const router = new VueRouter({
