@@ -18,6 +18,7 @@
           <b-input
             :type="item.type"
             v-model="item.value"
+            :placeholder="item.placeholder"
             :step="item.step"
           ></b-input>
         </div>
@@ -34,7 +35,6 @@
 </template>
 
 <script>
-import * as transform from "../util/transformators.js";
 import standardTime from "../util/timeFunctions.js"
 export default {
   name: "Home",
@@ -46,7 +46,8 @@ export default {
           id: 2,
           label: "Aktuelle Überstunden",
           type: "number",
-          value: 0,
+          value: null,
+          placeholder: "0",
           step: "0.25",
         },
         {
@@ -54,11 +55,12 @@ export default {
           label: "Netto-Arbeitszeit (Wöchentlich, Soll)",
           type: "number",
           value: 40,
+          placeholder: "38,5",
           step: "0.5",
           min: "1",
           max: "48"
         },
-        { id: 4, label: "Pause", type: "time", value: "00:30" },
+        { id: 4, label: "Pause", type: "time", value: "00:30", placeholder: "0,5" },
         {
           id: 6,
           label: "Gewünschte Abmeldezeit",
@@ -101,7 +103,7 @@ export default {
         },
         {
           label: "Geleistete Überstunden",
-          value1: 0,
+          value1: standard.doneOvertime,
           value2: 0,
           value3: 0,
           value4: 0,
@@ -115,7 +117,7 @@ export default {
         },
         {
           label: "Endstand der Überstunden",
-          value1: 0,
+          value1: standard.overtime,
           value2: 0,
           value3: 0,
           value4: 0,
@@ -125,15 +127,7 @@ export default {
   },
   methods: {
     // Functions for calculating values
-    getWorkingTimePerDaySoll: function () {
-      return this.items[2].value / 5;
-    },
-    getWorkingTimePerDayIst: function () {
-      const start = transform.timeToNumber(this.items[0].value);
-      const pause = transform.timeToNumber(this.items[3].value);
-      const end = transform.timeToNumber(this.items[4].value);
-      return (end - start - pause).toFixed(2);
-    },
+    
   },
 };
 </script>
