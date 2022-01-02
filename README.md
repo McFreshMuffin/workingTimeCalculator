@@ -1,4 +1,6 @@
-# arbeitszeiten
+# workingTimeCalculator
+
+This tool can be used for calculating your daily working time.
 
 ## Project setup
 ```
