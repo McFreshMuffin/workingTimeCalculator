@@ -1,20 +1,22 @@
 <template>
   <div class="flex flex-col items-center">
-    <div>
-      Willkommen zum mobilen Arbeitszeitenrechner. Im folgenden können Sie Ihre
-      Überstunden sowie ihr Abmeldezeit berechnen.
-    </div>
+    <div id="input" class="max-w-2xl w-full px-3">
+      <div>
+        Willkommen zum mobilen Arbeitszeitenrechner. Im folgenden können Sie
+        Ihre Überstunden sowie ihr Abmeldezeit berechnen.
+      </div>
 
-    <div class="w-full px-5">
       <div
         class="flex w-full flex-row mt-2"
         v-for="item in items"
         :key="item.id"
       >
-        <div class="flex w-1/2 items-center justify-end mr-2">
-          {{ item.label }}
+        <div class="flex w-1/2 flex-wrap content-center justify-center mr-2">
+          <div class="">
+            {{ item.label }}
+          </div>
         </div>
-        <div class="ml-2 w-1/2">
+        <div class="ml-2 w-1/2 flex flex-wrap content-center">
           <b-input
             :type="item.type"
             v-model="item.value"
@@ -26,16 +28,18 @@
     </div>
 
     <br />
-    <b-table :items="getCalculatedValues" :fields="fields">
-      <template #cell(label)="data">
-        <div class="font-bold">{{ data.value }}</div>
-      </template>
-    </b-table>
+    <div id="output" class="max-w-2xl w-full px-3">
+      <b-table :items="getCalculatedValues" :fields="fields">
+        <template #cell(label)="data">
+          <div class="font-bold">{{ data.value }}</div>
+        </template>
+      </b-table>
+    </div>
   </div>
 </template>
 
 <script>
-import standardTime from "../util/timeFunctions.js"
+import standardTime from "../util/timeFunctions.js";
 export default {
   name: "Home",
   data() {
@@ -58,9 +62,15 @@ export default {
           placeholder: "38,5",
           step: "0.5",
           min: "1",
-          max: "48"
+          max: "48",
         },
-        { id: 4, label: "Pause", type: "time", value: "00:30", placeholder: "0,5" },
+        {
+          id: 4,
+          label: "Pause",
+          type: "time",
+          value: "00:30",
+          placeholder: "0,5",
+        },
         {
           id: 6,
           label: "Gewünschte Abmeldezeit",
@@ -79,7 +89,13 @@ export default {
   },
   computed: {
     getCalculatedValues: function () {
-      const standard = new standardTime(this.items[0].value, this.items[1].value, this.items[2].value, this.items[3].value, this.items[4].value)
+      const standard = new standardTime(
+        this.items[0].value,
+        this.items[1].value,
+        this.items[2].value,
+        this.items[3].value,
+        this.items[4].value
+      );
       return [
         { label: "Arbeitsbeginn", value1: standard.startTime },
         { label: "Aktuelle Überstunden", value1: standard.actualOvertime },
@@ -127,7 +143,6 @@ export default {
   },
   methods: {
     // Functions for calculating values
-    
   },
 };
 </script>
