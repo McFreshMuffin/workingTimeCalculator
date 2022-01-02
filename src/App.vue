@@ -1,22 +1,20 @@
 <template>
   <div id="app">
-    <navbar/>
+    <header />
     <div id="main">
-      <home/>
+      <router-view />
     </div>
   </div>
 </template>
 
 <script>
-import navbar from './components/navbar.vue'
-import Home from './views/Home.vue'
+import header from "./components/header.vue";
 export default {
-  name: 'App',
-  components: {
-    navbar,
-    Home
-  }
-}
+  name: "App",
+  Components: {
+    header,
+  },
+};
 </script>
 
 <style>
@@ -25,24 +23,22 @@ body,
 #app {
   height: 100%;
   width: 100%;
+  background-color: #2c3e50;
+  color: white;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
 }
-
 
 #main {
   top: 56px;
   position: relative;
   padding-top: 1.5%;
   width: 100%;
-  height: calc(100% - 66px - 110px);
-  background-color: #2c3e50;
-  color: white;
+  height: calc(100% - 56px);
 }
 
 td {
@@ -52,21 +48,8 @@ td {
 
 @media screen and (min-width: 768px) {
   #main {
-    height: calc(100% - 66px - 86px);
+    height: calc(100% - 56px);
   }
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
 }
 
 /* Hide arrows by input type=number */
@@ -77,10 +60,11 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type=number] {
+input[type="number"] {
   -moz-appearance: textfield;
 }
 
+/* Overwriting CSS from table-Element from BootstrapVue Table */
 .white {
   color: white !important;
 }
