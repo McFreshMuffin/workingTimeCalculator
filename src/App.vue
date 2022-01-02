@@ -43,6 +43,11 @@ body,
   height: calc(100% - 66px - 110px);
 }
 
+td {
+  text-align: center;
+  vertical-align: middle;
+}
+
 @media screen and (min-width: 768px) {
   #main {
     height: calc(100% - 66px - 86px);
