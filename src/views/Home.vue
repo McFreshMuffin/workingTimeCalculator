@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col items-center">
+  <div id="arbeitszeiten" class="flex flex-col items-center">
     <div id="input" class="max-w-2xl w-full px-3">
       <div>
         Willkommen zum mobilen Arbeitszeitenrechner. Im folgenden können Sie
@@ -29,7 +29,7 @@
 
     <br />
     <div id="output" class="max-w-2xl w-full px-3">
-      <b-table :items="getCalculatedValues" :fields="fields">
+      <b-table :items="getCalculatedValues" :fields="fields" table-class="white">
         <template #cell(label)="data">
           <div class="font-bold">{{ data.value }}</div>
         </template>
@@ -80,7 +80,7 @@ export default {
       ],
       fields: [
         { key: "label", label: "" },
-        { key: "value1", label: "Angaben" },
+        { key: "value1", label: "Zeiten" },
         // { key: "value2", label: "45 Min Pause" },
         // { key: "value3", label: "15 Min Pause" },
         // { key: "value4", label: "Keine Pause" },
@@ -146,3 +146,9 @@ export default {
   },
 };
 </script>
+<style scoped>
+#arbeitszeiten {
+  background-color: #2c3e50;
+  color: white;
+}
+</style>

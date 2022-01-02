@@ -36,11 +36,13 @@ body,
 
 
 #main {
-  top: 66px;
+  top: 56px;
   position: relative;
-  padding-top: 2%;
+  padding-top: 1.5%;
   width: 100%;
   height: calc(100% - 66px - 110px);
+  background-color: #2c3e50;
+  color: white;
 }
 
 td {
@@ -77,5 +79,9 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+}
+
+.white {
+  color: white !important;
 }
 </style>
