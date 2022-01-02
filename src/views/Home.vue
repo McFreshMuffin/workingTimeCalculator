@@ -142,13 +142,6 @@ export default {
     },
   },
   methods: {
-    // Functions for calculating values
   },
 };
 </script>
-<style scoped>
-#arbeitszeiten {
-  background-color: #2c3e50;
-  color: white;
-}
-</style>

@@ -6,7 +6,7 @@ export default class standardTime {
         this.startTime = startTime
         this.actualOvertime = transform.twoDeimals(actualOvertime)
         this.workingTimeWeeklySoll = workingTimeSoll
-        // this.pauseInput = pauseInput
+        this.pauseInput = pauseInput
         this.endTime = endTime
 
         // Neue Werte berechnen
@@ -22,14 +22,13 @@ export default class standardTime {
             this.workingTimeDailyIstNetto = this.workingTimeDailyIstBrutto - transform.timeToNumber(this.pause)
         } else if (this.workingTimeDailyIstBrutto < 9.75 && this.workingTimeDailyIstBrutto >= 9.5) {
             this.workingTimeDailyIstNetto = (9).toFixed(2)
-            //ToDo Extract to seperated function
-            pauseInput >= transform.numberToTime(this.workingTimeDailyIstBrutto - this.workingTimeDailyIstNetto) ? this.pause = pauseInput : this.pause = transform.numberToTime(this.workingTimeDailyIstBrutto - this.workingTimeDailyIstNetto)
+            this.setPause()
         } else if (this.workingTimeDailyIstBrutto < 9.5 && this.workingTimeDailyIstBrutto >= 6.5) {
             pauseInput >= 0.5 ? this.pause = pauseInput : this.pause = "00:30"
             this.workingTimeDailyIstNetto = this.workingTimeDailyIstBrutto - transform.timeToNumber(this.pause)
         } else if (this.workingTimeDailyIstBrutto < 6.5 && this.workingTimeDailyIstBrutto >= 6) {
             this.workingTimeDailyIstNetto = (6).toFixed(2)
-            pauseInput >= transform.numberToTime(this.workingTimeDailyIstBrutto - this.workingTimeDailyIstNetto) ? this.pause = pauseInput : this.pause = transform.numberToTime(this.workingTimeDailyIstBrutto - this.workingTimeDailyIstNetto)
+            this.setPause()
         } else {
             pauseInput >= 0 ? this.pause = pauseInput : this.pause = "00:00"
             this.workingTimeDailyIstNetto = this.workingTimeDailyIstBrutto
@@ -41,6 +40,14 @@ export default class standardTime {
         this.doneOvertime = transform.twoDeimals(this.workingTimeDailyIstNetto - this.workingTimeDailySoll)
         this.overtime = transform.twoDeimals(this.actualOvertime + this.doneOvertime)
 
+    }
+
+    setPause() {
+        if (this.pauseInput >= transform.numberToTime(this.workingTimeDailyIstBrutto - this.workingTimeDailyIstNetto)) {
+            this.pause = this.pauseInput
+        } else {
+            this.pause = transform.numberToTime(this.workingTimeDailyIstBrutto - this.workingTimeDailyIstNetto)
+        }
     }
 
 }

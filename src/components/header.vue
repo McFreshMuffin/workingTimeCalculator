@@ -7,7 +7,7 @@
 
 <script>
 export default {
-    name: 'navbar'
+    name: 'header'
 }
 </script>
 
