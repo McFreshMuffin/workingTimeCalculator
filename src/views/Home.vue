@@ -13,11 +13,12 @@
       >
         <div class="flex w-1/2 flex-wrap content-center justify-center mr-2">
           <div v-b-tooltip.hover :title="item.tooltip">
-            {{ item.label }}
+            <label :for="item.label">{{ item.label }}</label>
           </div>
         </div>
         <div class="ml-2 w-1/2 flex flex-wrap content-center">
           <b-input
+            :id="item.label"
             :type="item.type"
             v-model="item.value"
             :placeholder="item.placeholder"

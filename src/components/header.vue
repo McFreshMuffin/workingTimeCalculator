@@ -1,7 +1,7 @@
 <template>
   <b-navbar fixed="top" class="bg-blue" type="dark">
     <b-navbar-brand class="ml-5" href="/">Arbeitszeiten Rechner</b-navbar-brand>
-    <b-navbar-nav class="ml-auto mr-3">
+    <div class="ml-auto mr-3">
       <b-dropdown
         no-caret
         right
@@ -22,7 +22,7 @@
           >Über AZ-Rechner</b-dropdown-item
         >
       </b-dropdown>
-    </b-navbar-nav>
+    </div>
   </b-navbar>
 </template>
 
