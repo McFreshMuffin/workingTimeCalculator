@@ -2,22 +2,34 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 
-import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import { 
+  NavbarPlugin,
+  DropdownPlugin,
+  IconsPlugin,
+  FormInputPlugin,
+  TablePlugin,
+  TooltipPlugin
+ } from 'bootstrap-vue'
 
 // Import Bootstrap an BootstrapVue CSS files (order is important)
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 // Make BootstrapVue available throughout your project
-Vue.use(BootstrapVue)
-// Optionally install the BootstrapVue icon components plugin
+Vue.use(NavbarPlugin)
+Vue.use(DropdownPlugin)
 Vue.use(IconsPlugin)
+Vue.use(FormInputPlugin)
+Vue.use(TablePlugin)
+Vue.use(TooltipPlugin)
+
 
 //Tailwind CSS
 //Import after Animate CSS for overriding Basic Animate-CSS Animations
 import './assets/css/tailwind.css';
 
 import store from './store'
+import './registerServiceWorker'
 
 Vue.config.productionTip = false
 

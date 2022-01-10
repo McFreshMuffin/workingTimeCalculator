@@ -1,5 +1,5 @@
 module.exports = {
-  content: ["./src/**/*.{html,js}"],
+  content: ["./src/**/*.{vue}"],
   theme: {
     extend: {
       colors: {
@@ -7,8 +7,15 @@ module.exports = {
       },
     },
   },
+  variants: {},
   plugins: [],
-  purge: [
-    './src/**/*.vue'
-  ]
+  purge: {
+    enabled: true,
+    mode: 'all',
+    preserveHtmlElements: false,
+    content: ['./src/**/*.vue'],
+    options: {
+      keyframes: true
+    }
+  }
 }
