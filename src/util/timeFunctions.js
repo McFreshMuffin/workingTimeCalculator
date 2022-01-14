@@ -7,34 +7,24 @@ function calculatePauseTime(pauseInput, pauseMandatory) {
         return pauseMandatory
     }
 }
-function calculatePauseTime2(pauseInput, workingTimeDailyIstBrutto, workingTimeDailyIstNetto) {
-    let pause = "00:00"
+function calculateMandatoryPause(pauseInput, workingTimeDailyIstBrutto) {
+    let pause = 0
             // Pausenzeit und tägliche Netto-Arbeitszeit anhand der jeweiligen Grenzwerte berechnen
-            if (transform.timeToNumber(pauseInput) >= 0.75) {
-                pause = pauseInput
-            } else if (workingTimeDailyIstBrutto >= 9.75) {
-                pause = "00:45"
+            if (workingTimeDailyIstBrutto >= 9.75) {
+                pause = 0.75
             } else if (workingTimeDailyIstBrutto < 9.75 && workingTimeDailyIstBrutto >= 9.5) {
-                pause = setPause(pauseInput, workingTimeDailyIstBrutto, workingTimeDailyIstNetto)
+                pause = workingTimeDailyIstBrutto - 9
             } else if (workingTimeDailyIstBrutto < 9.5 && workingTimeDailyIstBrutto >= 6.5) {
-                pauseInput >= 0.5 ? pause = pauseInput : pause = "00:30"
+                pause = 0.5
             } else if (workingTimeDailyIstBrutto < 6.5 && workingTimeDailyIstBrutto >= 6) {
-                pause = setPause(pauseInput, workingTimeDailyIstBrutto, workingTimeDailyIstNetto)
+                pause = workingTimeDailyIstBrutto - 6
             } else {
-                pauseInput >= 0 ? pause = pauseInput : pause = "00:00"
+                pause = 0
             }
-    return pause
-}
-
-function setPause(pauseInput, workingTimeDailyIstBrutto, workingTimeDailyIstNetto) {
-    if (pauseInput >= transform.numberToTime(workingTimeDailyIstBrutto - workingTimeDailyIstNetto)) {
-        return pauseInput
-    } else {
-        return transform.numberToTime(workingTimeDailyIstBrutto - workingTimeDailyIstNetto)
-    }
+    return transform.numberToTime(pause)
 }
 
 export {
     calculatePauseTime as getPause,
-    calculatePauseTime2 as getPause2
+    calculateMandatoryPause as getMandatoryPause
 }

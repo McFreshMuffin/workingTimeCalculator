@@ -54,7 +54,7 @@
 </template>
 
 <script>
-import standardTime from "../util/calculateOverTime.js";
+import calculatedOverTime from "../util/calculateOverTime.js";
 import calculatedEndTime from "../util/calculateEndTime.js";
 export default {
   name: "Home",
@@ -128,7 +128,7 @@ export default {
   },
   computed: {
     getCalculatedValues: function () {
-      const standard = new standardTime(
+      const overTime = new calculatedOverTime(
         this.items[0].value,
         this.items[1].value,
         this.items[2].value,
@@ -143,51 +143,51 @@ export default {
         this.items[6].value
       );
       return [
-        { label: "Arbeitsbeginn", value1: standard.startTime },
+        { label: "Arbeitsbeginn", value1: overTime.startTime },
         {
           label: "Aktuelle Überstunden",
           tooltip:
             "Die Anzahl an Überstunden, die man zu Beginn des Tages gesammelt hat.",
-          value1: standard.actualOvertime,
+          value1: overTime.actualOvertime,
         },
         {
           label: "Soll-Arbeitszeit",
           tooltip: "Netto-Arbeitszeit (Täglich, Soll)",
-          value1: standard.workingTimeDailySoll,
+          value1: overTime.workingTimeDailySoll,
         },
         {
           label: "Ist-Arbeitszeit",
           tooltip: "Netto-Arbeitszeit (Täglich, Ist)",
-          value1: standard.workingTimeDailyIstNetto,
+          value1: overTime.workingTimeDailyIstNetto,
           value2: endTime.workingTimeDailyIstNetto,
           value3: 0,
         },
         {
           label: "Pausenzeit",
-          value1: standard.pause,
+          value1: overTime.pause,
           value2: endTime.pause,
           value3: 0,
-          _cellVariants: { value1: standard.pauseVariant },
+          _cellVariants: { value1: overTime.pauseVariant },
         },
         {
           label: "Überstunden",
           tooltip: "Die Überstunden, die heute geleistet wurden.",
-          value1: standard.doneOvertime,
+          value1: overTime.doneOvertime,
           value2: endTime.doneOvertime,
           value3: 0,
           _cellVariants: { value1: "success" },
         },
         {
           label: "Arbeitsende",
-          value1: this.items[4].value,
+          value1: overTime.endTime,
           value2: endTime.endTime,
           value3: 0,
           _cellVariants: { value2: "success" },
         },
         {
           label: "Gesamte Überstunden",
-          value1: standard.overtime,
-          value2: endTime.overtime,
+          value1: overTime.overTime,
+          value2: endTime.overTime,
           value3: 0,
         },
       ];
