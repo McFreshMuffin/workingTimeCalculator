@@ -1,12 +1,10 @@
 import { shallowMount } from '@vue/test-utils'
-import HelloWorld from '@/components/HelloWorld.vue'
+import Home from '@/views/Home.vue'
 
-describe('HelloWorld.vue', () => {
-  it('renders props.msg when passed', () => {
-    const msg = 'new message'
-    const wrapper = shallowMount(HelloWorld, {
-      propsData: { msg }
-    })
-    expect(wrapper.text()).toMatch(msg)
-  })
+test('render Home', () => {
+  // render the component
+  const wrapper = shallowMount(Home)
+
+  // assert the error has gone away
+  expect(wrapper.find('.error').exists()).toBe(false)
 })
