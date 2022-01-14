@@ -1,22 +1,23 @@
 <template>
   <div id="arbeitszeiten" class="flex flex-col items-center">
     <div id="input" class="max-w-2xl w-full px-3">
-      <div>
+      <!-- <div>
         Willkommen zum mobilen Arbeitszeitenrechner. Im folgenden können Sie
-        Ihre Überstunden sowie ihr Abmeldezeit berechnen. Die berechneten Werte werden in Grün markiert.
-      </div>
+        Ihre Überstunden sowie ihr Abmeldezeit berechnen. Die berechneten Werte
+        werden in Grün markiert.
+      </div> -->
 
       <div
         class="flex w-full flex-row mt-2"
         v-for="item in items"
         :key="item.id"
       >
-        <div class="flex w-1/2 flex-wrap content-center justify-center mr-2">
+        <div v-if="item.id !== 0" class="flex w-1/2 flex-wrap content-center justify-center mr-2">
           <div v-b-tooltip.hover :title="item.tooltip">
             <label :for="item.label">{{ item.label }}</label>
           </div>
         </div>
-        <div class="ml-2 w-1/2 flex flex-wrap content-center">
+        <div v-if="item.id !== 0" class="ml-2 w-1/2 flex flex-wrap content-center">
           <b-input
             :id="item.label"
             :type="item.type"
@@ -25,6 +26,7 @@
             :step="item.step"
           ></b-input>
         </div>
+        <div v-else class="h-px bg-white w-full" />
       </div>
     </div>
 
@@ -52,7 +54,8 @@
 </template>
 
 <script>
-import standardTime from "../util/timeFunctions.js";
+import standardTime from "../util/calculateOverTime.js";
+import calculatedEndTime from "../util/calculateEndTime.js";
 export default {
   name: "Home",
   data() {
@@ -87,11 +90,20 @@ export default {
           value: "00:30",
           placeholder: "0,5",
         },
+        {id: 0},
         {
-          id: 6,
-          label: "Abmelden um",
+          id: 5,
+          label: "Gewünschtes Arbeitsende",
           type: "time",
           value: "16:30",
+        },
+        {
+          id: 6,
+          label: "Gewünschte Überstunden",
+          type: "number",
+          value: null,
+          placeholder: "0",
+          step: "0.25"
         },
       ],
       fields: [
@@ -99,14 +111,14 @@ export default {
         {
           key: "value1",
           label: "Überstunden",
-          tooltip: "In dieser Spalte werden die Überstunden berechnet",
+          tooltip: 'Die Überstunden werden anhand des gewünschten Arbeitsende berechnet.',
         },
         {
           key: "value2",
           label: "Abmelden",
-          tooltip: "In dieser Spalte wird die Abmeldezeit berechnet.",
+          tooltip: 'Das Arbeitsende wird anhand der gewünschten Überstunden berechnet.',
         },
-        // { 
+        // {
         //   key: "value3",
         //   label: "Abmelden keine Pause",
         //   tooltip: ""
@@ -121,7 +133,14 @@ export default {
         this.items[1].value,
         this.items[2].value,
         this.items[3].value,
-        this.items[4].value
+        this.items[5].value
+      );
+      const endTime = new calculatedEndTime(
+        this.items[0].value,
+        this.items[1].value,
+        this.items[2].value,
+        this.items[3].value,
+        this.items[6].value
       );
       return [
         { label: "Arbeitsbeginn", value1: standard.startTime },
@@ -140,35 +159,35 @@ export default {
           label: "Ist-Arbeitszeit",
           tooltip: "Netto-Arbeitszeit (Täglich, Ist)",
           value1: standard.workingTimeDailyIstNetto,
-          value2: 0,
+          value2: endTime.workingTimeDailyIstNetto,
           value3: 0,
         },
         {
           label: "Pausenzeit",
           value1: standard.pause,
-          value2: 0,
+          value2: endTime.pause,
           value3: 0,
-          _cellVariants: { value1: standard.pauseVariant }
+          _cellVariants: { value1: standard.pauseVariant },
         },
         {
           label: "Überstunden",
           tooltip: "Die Überstunden, die heute geleistet wurden.",
           value1: standard.doneOvertime,
-          value2: 0,
+          value2: endTime.doneOvertime,
           value3: 0,
-          _cellVariants: {value1: 'success'}
+          _cellVariants: { value1: "success" },
         },
         {
           label: "Arbeitsende",
           value1: this.items[4].value,
-          value2: 0,
+          value2: endTime.endTime,
           value3: 0,
-          _cellVariants: {value2: 'success'}
+          _cellVariants: { value2: "success" },
         },
         {
           label: "Gesamte Überstunden",
           value1: standard.overtime,
-          value2: 0,
+          value2: endTime.overtime,
           value3: 0,
         },
       ];

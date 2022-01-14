@@ -79,6 +79,10 @@ b {
 Add the correct font size in all browsers.
 */
 
+small {
+  font-size: 80%;
+}
+
 /**
 Prevent 'sub' and 'sup' elements from affecting the line height in all browsers.
 */
@@ -437,6 +441,10 @@ input {
   height: 1.5rem;
 }
 
+.h-px {
+  height: 1px;
+}
+
 .w-6 {
   width: 1.5rem;
 }
@@ -483,6 +491,11 @@ input {
 
 .border {
   border-width: 1px;
+}
+
+.bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
 }
 
 .bg-blue {
