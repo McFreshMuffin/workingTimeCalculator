@@ -4,7 +4,11 @@ function transformTimeToNumber(string) {
 }
 
 function transformNumberToTime(numb) {
-    return parseInt(numb).toString() + ":" + Math.round((parseFloat(numb) - parseInt(numb)) * 60).toString()
+    let hour = parseInt(numb).toString()
+    if (hour.length == 1) {
+        hour = "0" + hour
+    }
+    return hour + ":" + Math.round((parseFloat(numb) - parseInt(numb)) * 60).toString()
 }
 
 function roundNumberToTwoDecimals(numb) {
