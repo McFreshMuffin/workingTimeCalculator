@@ -1,8 +1,8 @@
 <template>
-  <div class="privacyPolicy mx-5">
-    <h1>Datenschutz&shy;erkl&auml;rung</h1>
-    <h2>1. Datenschutz auf einen Blick</h2>
-    <h3>Allgemeine Hinweise</h3>
+  <div class="privacyPolicy mx-5 pb-3 text-justify flex flex-col items-center">
+    <h1 class="font-bold text-2xl underline">Datenschutz&shy;erkl&auml;rung</h1>
+    <h2 class="mt-3 text-xl mb-1">1. Datenschutz auf einen Blick</h2>
+    <h3 class="mt-2 text-lg mb-1">Allgemeine Hinweise</h3>
     <p>
       Die folgenden Hinweise geben einen einfachen &Uuml;berblick dar&uuml;ber,
       was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website
@@ -11,8 +11,8 @@
       Informationen zum Thema Datenschutz entnehmen Sie unserer unter diesem
       Text aufgef&uuml;hrten Datenschutzerkl&auml;rung.
     </p>
-    <h3>Datenerfassung auf dieser Website</h3>
-    <h4>
+    <h3 class="mt-2 text-lg mb-1">Datenerfassung auf dieser Website</h3>
+    <h4 class="mt-1">
       Wer ist verantwortlich f&uuml;r die Datenerfassung auf dieser Website?
     </h4>
     <p>
@@ -21,7 +21,7 @@
       &bdquo;Hinweis zur Verantwortlichen Stelle&ldquo; in dieser
       Datenschutzerkl&auml;rung entnehmen.
     </p>
-    <h4>Wie erfassen wir Ihre Daten?</h4>
+    <h4 class="mt-1">Wie erfassen wir Ihre Daten?</h4>
     <p>
       Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen.
       Hierbei kann es sich z.&nbsp;B. um Daten handeln, die Sie in ein
@@ -34,13 +34,13 @@
       Seitenaufrufs). Die Erfassung dieser Daten erfolgt automatisch, sobald Sie
       diese Website betreten.
     </p>
-    <h4>Wof&uuml;r nutzen wir Ihre Daten?</h4>
+    <h4 class="mt-1">Wof&uuml;r nutzen wir Ihre Daten?</h4>
     <p>
       Ein Teil der Daten wird erhoben, um eine fehlerfreie Bereitstellung der
       Website zu gew&auml;hrleisten. Andere Daten k&ouml;nnen zur Analyse Ihres
       Nutzerverhaltens verwendet werden.
     </p>
-    <h4>Welche Rechte haben Sie bez&uuml;glich Ihrer Daten?</h4>
+    <h4 class="mt-1">Welche Rechte haben Sie bez&uuml;glich Ihrer Daten?</h4>
     <p>
       Sie haben jederzeit das Recht, unentgeltlich Auskunft &uuml;ber Herkunft,
       Empf&auml;nger und Zweck Ihrer gespeicherten personenbezogenen Daten zu
@@ -57,8 +57,8 @@
       Hierzu sowie zu weiteren Fragen zum Thema Datenschutz k&ouml;nnen Sie sich
       jederzeit an uns wenden.
     </p>
-    <h2>2. Hosting</h2>
-    <h3>Strato</h3>
+    <h2 class="mt-5 text-xl mb-1">2. Hosting</h2>
+    <h3 class="mt-2 text-lg mb-1">Strato</h3>
     <p>
       Wir hosten unsere Website bei Strato. Anbieter ist die Strato AG,
       Pascalstra&szlig;e 10, 10587 Berlin (nachfolgend: &bdquo;Strato&ldquo;).
@@ -69,6 +69,7 @@
       Weitere Informationen entnehmen Sie der Datenschutzerkl&auml;rung von
       Strato:
       <a
+        class="underline"
         href="https://www.strato.de/datenschutz/"
         target="_blank"
         rel="noopener noreferrer"
@@ -86,7 +87,7 @@
       (z.&nbsp;B. Device-Fingerprinting) im Sinne des TTDSG umfasst. Die
       Einwilligung ist jederzeit widerrufbar.
     </p>
-    <h4>Auftragsverarbeitung</h4>
+    <h4 class="mt-1">Auftragsverarbeitung</h4>
     <p>
       Wir haben einen Vertrag &uuml;ber Auftragsverarbeitung (AVV) mit dem oben
       genannten Anbieter geschlossen. Hierbei handelt es sich um einen
@@ -94,8 +95,8 @@
       dass dieser die personenbezogenen Daten unserer Websitebesucher nur nach
       unseren Weisungen und unter Einhaltung der DSGVO verarbeitet.
     </p>
-    <h2>3. Allgemeine Hinweise und Pflicht&shy;informationen</h2>
-    <h3>Datenschutz</h3>
+    <h2 class="mt-5 text-xl mb-1">3. Allgemeine Hinweise und Pflicht&shy;informationen</h2>
+    <h3 class="mt-2 text-lg mb-1">Datenschutz</h3>
     <p>
       Die Betreiber dieser Seiten nehmen den Schutz Ihrer pers&ouml;nlichen
       Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich
@@ -116,7 +117,7 @@
       aufweisen kann. Ein l&uuml;ckenloser Schutz der Daten vor dem Zugriff
       durch Dritte ist nicht m&ouml;glich.
     </p>
-    <h3>Hinweis zur verantwortlichen Stelle</h3>
+    <h3 class="mt-2 text-lg mb-1">Hinweis zur verantwortlichen Stelle</h3>
     <p>
       Die verantwortliche Stelle f&uuml;r die Datenverarbeitung auf dieser
       Website ist:
@@ -137,7 +138,7 @@
       E-Mail-Adressen o. &Auml;.) entscheidet.
     </p>
 
-    <h3>Speicherdauer</h3>
+    <h3 class="mt-2 text-lg mb-1">Speicherdauer</h3>
     <p>
       Soweit innerhalb dieser Datenschutzerkl&auml;rung keine speziellere
       Speicherdauer genannt wurde, verbleiben Ihre personenbezogenen Daten bei
@@ -149,7 +150,7 @@
       handelsrechtliche Aufbewahrungsfristen); im letztgenannten Fall erfolgt
       die L&ouml;schung nach Fortfall dieser Gr&uuml;nde.
     </p>
-    <h3>
+    <h3 class="mt-2 text-lg mb-1">
       Allgemeine Hinweise zu den Rechtsgrundlagen der Datenverarbeitung auf
       dieser Website
     </h3>
@@ -172,7 +173,7 @@
       im Einzelfall einschl&auml;gigen Rechtsgrundlagen wird in den folgenden
       Abs&auml;tzen dieser Datenschutzerkl&auml;rung informiert.
     </p>
-    <h3>Widerruf Ihrer Einwilligung zur Datenverarbeitung</h3>
+    <h3 class="mt-2 text-lg mb-1">Widerruf Ihrer Einwilligung zur Datenverarbeitung</h3>
     <p>
       Viele Datenverarbeitungsvorg&auml;nge sind nur mit Ihrer
       ausdr&uuml;cklichen Einwilligung m&ouml;glich. Sie k&ouml;nnen eine
@@ -180,7 +181,7 @@
       Rechtm&auml;&szlig;igkeit der bis zum Widerruf erfolgten Datenverarbeitung
       bleibt vom Widerruf unber&uuml;hrt.
     </p>
-    <h3>
+    <h3 class="mt-2 text-lg mb-1">
       Widerspruchsrecht gegen die Datenerhebung in besonderen F&auml;llen sowie
       gegen Direktwerbung (Art. 21 DSGVO)
     </h3>
@@ -209,7 +210,7 @@
       MEHR ZUM ZWECKE DER DIREKTWERBUNG VERWENDET (WIDERSPRUCH NACH ART. 21 ABS.
       2 DSGVO).
     </p>
-    <h3>
+    <h3 class="mt-2 text-lg mb-1">
       Beschwerde&shy;recht bei der zust&auml;ndigen Aufsichts&shy;beh&ouml;rde
     </h3>
     <p>
@@ -220,7 +221,7 @@
       Beschwerderecht besteht unbeschadet anderweitiger verwaltungsrechtlicher
       oder gerichtlicher Rechtsbehelfe.
     </p>
-    <h3>Recht auf Daten&shy;&uuml;bertrag&shy;barkeit</h3>
+    <h3 class="mt-2 text-lg mb-1">Recht auf Daten&shy;&uuml;bertrag&shy;barkeit</h3>
     <p>
       Sie haben das Recht, Daten, die wir auf Grundlage Ihrer Einwilligung oder
       in Erf&uuml;llung eines Vertrags automatisiert verarbeiten, an sich oder
@@ -229,7 +230,7 @@
       Daten an einen anderen Verantwortlichen verlangen, erfolgt dies nur,
       soweit es technisch machbar ist.
     </p>
-    <h3>SSL- bzw. TLS-Verschl&uuml;sselung</h3>
+    <h3 class="mt-2 text-lg mb-1">SSL- bzw. TLS-Verschl&uuml;sselung</h3>
     <p>
       Diese Seite nutzt aus Sicherheitsgr&uuml;nden und zum Schutz der
       &Uuml;bertragung vertraulicher Inhalte, wie zum Beispiel Bestellungen oder
@@ -244,7 +245,7 @@
       Daten, die Sie an uns &uuml;bermitteln, nicht von Dritten mitgelesen
       werden.
     </p>
-    <h3>Auskunft, L&ouml;schung und Berichtigung</h3>
+    <h3 class="mt-2 text-lg mb-1">Auskunft, L&ouml;schung und Berichtigung</h3>
     <p>
       Sie haben im Rahmen der geltenden gesetzlichen Bestimmungen jederzeit das
       Recht auf unentgeltliche Auskunft &uuml;ber Ihre gespeicherten
@@ -253,7 +254,7 @@
       L&ouml;schung dieser Daten. Hierzu sowie zu weiteren Fragen zum Thema
       personenbezogene Daten k&ouml;nnen Sie sich jederzeit an uns wenden.
     </p>
-    <h3>Recht auf Einschr&auml;nkung der Verarbeitung</h3>
+    <h3 class="mt-2 text-lg mb-1">Recht auf Einschr&auml;nkung der Verarbeitung</h3>
     <p>
       Sie haben das Recht, die Einschr&auml;nkung der Verarbeitung Ihrer
       personenbezogenen Daten zu verlangen. Hierzu k&ouml;nnen Sie sich
@@ -297,8 +298,8 @@
       Gr&uuml;nden eines wichtigen &ouml;ffentlichen Interesses der
       Europ&auml;ischen Union oder eines Mitgliedstaats verarbeitet werden.
     </p>
-    <h2>4. Datenerfassung auf dieser Website</h2>
-    <h3>Server-Log-Dateien</h3>
+    <h2 class="mt-5 text-xl mb-1">4. Datenerfassung auf dieser Website</h2>
+    <h3 class="mt-2 text-lg mb-1">Server-Log-Dateien</h3>
     <p>
       Der Provider der Seiten erhebt und speichert automatisch Informationen in
       so genannten Server-Log-Dateien, die Ihr Browser automatisch an uns
@@ -323,7 +324,7 @@
       &ndash; hierzu m&uuml;ssen die Server-Log-Files erfasst werden.
     </p>
     <p>
-      Quelle: <a href="https://www.e-recht24.de">https://www.e-recht24.de</a>
+      Quelle: <a class="underline" target="_blank" rel="noopener noreferrer" href="https://www.e-recht24.de">https://www.e-recht24.de</a>
     </p>
   </div>
 </template>
