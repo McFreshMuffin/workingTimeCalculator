@@ -24,6 +24,8 @@
             v-model="item.value"
             :placeholder="item.placeholder"
             :step="item.step"
+            :min="item.min"
+            :max="item.max"
           ></b-input>
         </div>
         <div v-else class="h-px bg-white w-full" />
