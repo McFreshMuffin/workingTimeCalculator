@@ -3,7 +3,7 @@
     <div id="input" class="max-w-2xl w-full px-3">
       <div>
         Willkommen zum mobilen Arbeitszeitenrechner. Im folgenden können Sie
-        Ihre Überstunden sowie ihr Abmeldezeit berechnen.
+        Ihre Überstunden sowie ihr Abmeldezeit berechnen. Die berechneten Werte werden in Grün markiert.
       </div>
 
       <div
@@ -33,8 +33,14 @@
       <b-table
         :items="getCalculatedValues"
         :fields="fields"
+        small
         table-class="white"
       >
+        <template v-slot:head()="data">
+          <div v-b-tooltip.left.hover :title="data.field.tooltip">
+            {{ data.label }}
+          </div>
+        </template>
         <template v-slot:cell(newLabel)="data">
           <div class="font-bold" v-b-tooltip.hover :title="data.item.tooltip">
             {{ data.item.label }}
@@ -90,10 +96,21 @@ export default {
       ],
       fields: [
         { key: "newLabel", label: "" },
-        { key: "value1", label: "Zeiten" },
-        // { key: "value2", label: "45 Min Pause" },
-        // { key: "value3", label: "15 Min Pause" },
-        // { key: "value4", label: "Keine Pause" },
+        {
+          key: "value1",
+          label: "Überstunden",
+          tooltip: "In dieser Spalte werden die Überstunden berechnet",
+        },
+        {
+          key: "value2",
+          label: "Abmelden",
+          tooltip: "In dieser Spalte wird die Abmeldezeit berechnet.",
+        },
+        // { 
+        //   key: "value3",
+        //   label: "Abmelden keine Pause",
+        //   tooltip: ""
+        // },
       ],
     };
   },
@@ -125,14 +142,13 @@ export default {
           value1: standard.workingTimeDailyIstNetto,
           value2: 0,
           value3: 0,
-          value4: 0,
         },
         {
           label: "Pausenzeit",
           value1: standard.pause,
           value2: 0,
           value3: 0,
-          value4: 0,
+          _cellVariants: { value1: standard.pauseVariant }
         },
         {
           label: "Überstunden",
@@ -140,21 +156,20 @@ export default {
           value1: standard.doneOvertime,
           value2: 0,
           value3: 0,
-          value4: 0,
+          _cellVariants: {value1: 'success'}
         },
         {
           label: "Arbeitsende",
           value1: this.items[4].value,
           value2: 0,
           value3: 0,
-          value4: 0,
+          _cellVariants: {value2: 'success'}
         },
         {
           label: "Gesamte Überstunden",
           value1: standard.overtime,
           value2: 0,
           value3: 0,
-          value4: 0,
         },
       ];
     },
