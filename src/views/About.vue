@@ -15,7 +15,7 @@
       Sollten Sie Fehler oder Funktionswünsche haben, wenden Sie sich an den
       Entwickler über die im folgenden angegebene E-Mail Adresse.
     </div>
-    <div class="text-xl mt-2 mb-1 underline">App</div>
+    <div class="text-xl mt-4 mb-1 underline">App</div>
     <div>
       Entwickler:
       <a
@@ -37,6 +37,15 @@
       >
     </div>
     <div>Version: 1.0</div>
+    <div>
+      <a
+        class="underline"
+        target="_blank"
+        rel="noopener noreferrer"
+        href="https://github.com/McFreshMuffin/workingTimeCalculator"
+        >Quellcode auf Github ansehen</a
+      >
+    </div>
   </div>
 </template>
 
