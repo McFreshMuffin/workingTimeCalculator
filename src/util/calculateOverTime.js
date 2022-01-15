@@ -11,8 +11,10 @@ export default class calculatedOverTime {
 
         //calculate new values
         this.workingTimeDailyIstBrutto = transform.twoDeimals(transform.timeToNumber(endTime) - transform.timeToNumber(startTime))
-        let mandatoryPause = getMandatoryPause(pauseInput, this.workingTimeDailyIstBrutto)
-        this.pause = getPause(pauseInput, mandatoryPause)
+        let mandatoryPause = getMandatoryPause(this.workingTimeDailyIstBrutto)
+        let pause = getPause(pauseInput, mandatoryPause)
+        this.pause = pause.value
+        this.pauseVariant = pause.variant
         this.workingTimeDailyIstNetto = transform.twoDeimals(this.workingTimeDailyIstBrutto - transform.timeToNumber(this.pause))
         this.doneOvertime = transform.twoDeimals(this.workingTimeDailyIstNetto - this.workingTimeDailySoll)
         this.overTime = transform.twoDeimals(this.actualOvertime + this.doneOvertime)

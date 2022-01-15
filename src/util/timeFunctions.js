@@ -2,12 +2,12 @@ import * as transform from './transformators.js'
 
 function calculatePauseTime(pauseInput, pauseMandatory) {
     if (transform.timeToNumber(pauseInput) >= transform.timeToNumber(pauseMandatory)) {
-        return pauseInput
+        return { value: pauseInput }
     } else {
-        return pauseMandatory
+        return { value: pauseMandatory, variant: 'success' }
     }
 }
-function calculateMandatoryPause(pauseInput, workingTimeDailyIstBrutto) {
+function calculateMandatoryPause(workingTimeDailyIstBrutto) {
     let pause = 0
             // Pausenzeit und tägliche Netto-Arbeitszeit anhand der jeweiligen Grenzwerte berechnen
             if (workingTimeDailyIstBrutto >= 9.75) {

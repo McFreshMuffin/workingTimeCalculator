@@ -156,7 +156,7 @@ export default {
           label: "Pausenzeit",
           value1: overTime.pause,
           value2: endTime.pause,
-          _cellVariants: { value1: overTime.pauseVariant },
+          _cellVariants: { value1: overTime.pauseVariant, value2: endTime.pauseVariant },
         },
         {
           label: "Überstunden",
