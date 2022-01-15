@@ -24,6 +24,11 @@ const routes = [
     path: '/about',
     name: 'Über AZ-Rechner',
     component: () => import('../views/About.vue')
+  },
+  {
+    path: '/settings',
+    name: 'Einstellungen',
+    component: () => import('../views/Settings.vue')
   }
 ]
 

@@ -14,12 +14,15 @@
             class="w-6 h-6 text-white bg-blue"
           ></b-icon>
         </template>
+        <b-dropdown-item @click="$router.push('/about')"
+          >Über AZ-Rechner</b-dropdown-item
+        >
+        <b-dropdown-item @click="$router.push('/settings')">Einstellungen</b-dropdown-item>
         <b-dropdown-item @click="$router.push('/privacyPolicy')"
           >Datenschutz</b-dropdown-item
         >
-        <b-dropdown-item @click="$router.push('/impressum')">Impressum</b-dropdown-item>
-        <b-dropdown-item @click="$router.push('/about')"
-          >Über AZ-Rechner</b-dropdown-item
+        <b-dropdown-item @click="$router.push('/impressum')"
+          >Impressum</b-dropdown-item
         >
       </b-dropdown>
     </div>
