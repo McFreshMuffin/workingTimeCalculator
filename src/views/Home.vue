@@ -1,12 +1,6 @@
 <template>
   <div id="arbeitszeiten" class="flex flex-col items-center">
     <div id="input" class="max-w-2xl w-full px-3">
-      <!-- <div>
-        Willkommen zum mobilen Arbeitszeitenrechner. Im folgenden können Sie
-        Ihre Überstunden sowie ihr Abmeldezeit berechnen. Die berechneten Werte
-        werden in Grün markiert.
-      </div> -->
-
       <div
         class="flex w-full flex-row mt-2"
         v-for="item in items"
@@ -120,11 +114,6 @@ export default {
           label: "Abmelden",
           tooltip: 'Das Arbeitsende wird anhand der gewünschten Überstunden berechnet.',
         },
-        // {
-        //   key: "value3",
-        //   label: "Abmelden keine Pause",
-        //   tooltip: ""
-        // },
       ],
     };
   },
@@ -162,13 +151,11 @@ export default {
           tooltip: "Netto-Arbeitszeit (Täglich, Ist)",
           value1: overTime.workingTimeDailyIstNetto,
           value2: endTime.workingTimeDailyIstNetto,
-          value3: 0,
         },
         {
           label: "Pausenzeit",
           value1: overTime.pause,
           value2: endTime.pause,
-          value3: 0,
           _cellVariants: { value1: overTime.pauseVariant },
         },
         {
@@ -176,25 +163,21 @@ export default {
           tooltip: "Die Überstunden, die heute geleistet wurden.",
           value1: overTime.doneOvertime,
           value2: endTime.doneOvertime,
-          value3: 0,
           _cellVariants: { value1: "success" },
         },
         {
           label: "Arbeitsende",
           value1: overTime.endTime,
           value2: endTime.endTime,
-          value3: 0,
           _cellVariants: { value2: "success" },
         },
         {
           label: "Gesamte Überstunden",
           value1: overTime.overTime,
           value2: endTime.overTime,
-          value3: 0,
         },
       ];
     },
   },
-  methods: {},
 };
 </script>
