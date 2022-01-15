@@ -6,12 +6,18 @@
         v-for="item in items"
         :key="item.id"
       >
-        <div v-if="item.id !== 0" class="flex w-1/2 flex-wrap content-center justify-center mr-2">
+        <div
+          v-if="item.id !== 0"
+          class="flex w-1/2 flex-wrap content-center justify-center mr-2"
+        >
           <div v-b-tooltip.hover :title="item.tooltip">
             <label :for="item.label">{{ item.label }}</label>
           </div>
         </div>
-        <div v-if="item.id !== 0" class="ml-2 w-1/2 flex flex-wrap content-center">
+        <div
+          v-if="item.id !== 0"
+          class="ml-2 w-1/2 flex flex-wrap content-center"
+        >
           <b-input
             :id="item.label"
             :type="item.type"
@@ -86,7 +92,7 @@ export default {
           value: "00:30",
           placeholder: "0,5",
         },
-        {id: 0},
+        { id: 0 },
         {
           id: 5,
           label: "Gewünschtes Arbeitsende",
@@ -99,7 +105,7 @@ export default {
           type: "number",
           value: null,
           placeholder: "0",
-          step: "0.25"
+          step: "0.25",
         },
       ],
       fields: [
@@ -107,18 +113,21 @@ export default {
         {
           key: "value1",
           label: "Überstunden",
-          tooltip: 'Die Überstunden werden anhand des gewünschten Arbeitsende berechnet.',
+          tooltip:
+            "Die Überstunden werden anhand des gewünschten Arbeitsende berechnet.",
         },
         {
           key: "value2",
           label: "Abmelden",
-          tooltip: 'Das Arbeitsende wird anhand der gewünschten Überstunden berechnet.',
+          tooltip:
+            "Das Arbeitsende wird anhand der gewünschten Überstunden berechnet.",
         },
       ],
     };
   },
   computed: {
     getCalculatedValues: function () {
+      this.setValues()
       const overTime = new calculatedOverTime(
         this.items[0].value,
         this.items[1].value,
@@ -156,7 +165,10 @@ export default {
           label: "Pausenzeit",
           value1: overTime.pause,
           value2: endTime.pause,
-          _cellVariants: { value1: overTime.pauseVariant, value2: endTime.pauseVariant },
+          _cellVariants: {
+            value1: overTime.pauseVariant,
+            value2: endTime.pauseVariant,
+          },
         },
         {
           label: "Überstunden",
@@ -177,6 +189,30 @@ export default {
           value2: endTime.overTime,
         },
       ];
+    },
+  },
+  beforeMount() {
+    if (this.$store.state.valuesSaveStatus) {
+      this.items[0].value = this.$store.state.saveState.startTime;
+      this.items[1].value = this.$store.state.saveState.actualOvertime;
+      this.items[2].value = this.$store.state.saveState.workingTimeWeekly;
+      this.items[3].value = this.$store.state.saveState.pauseInput;
+      this.items[5].value = this.$store.state.saveState.endTime;
+      this.items[6].value = this.$store.state.saveState.doneOvertime;
+    }
+  },
+  methods: {
+    setValues: function () {
+      if (this.$store.state.valuesSaveStatus) {
+        this.$store.commit("setSaveState", {
+          startTime: this.items[0].value,
+          actualOvertime: this.items[1].value,
+          workingTimeWeekly: this.items[2].value,
+          pauseInput: this.items[3].value,
+          endTime: this.items[5].value,
+          doneOvertime: this.items[6].value,
+        });
+      }
     },
   },
 };
