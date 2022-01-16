@@ -68,7 +68,4 @@ input[type="number"] {
 .white {
   color: white !important;
 }
-.btn-secondary {
-  background-color: #00669B !important;
-}
 </style>

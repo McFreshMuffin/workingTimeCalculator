@@ -2,34 +2,10 @@
   <div id="arbeitszeiten" class="flex flex-col items-center">
     <div id="input" class="max-w-2xl w-full px-3">
       <div
-        class="flex w-full flex-row mt-2"
         v-for="item in items"
         :key="item.id"
       >
-        <div
-          v-if="item.id !== 0"
-          class="flex w-1/2 flex-wrap content-center justify-center mr-2"
-        >
-          <div v-b-tooltip.hover :title="item.tooltip">
-            <label :for="item.label">{{ item.label }}</label>
-          </div>
-        </div>
-        <div
-          v-if="item.id !== 0"
-          class="ml-2 w-1/2 flex flex-wrap content-center"
-        >
-          <b-input
-            :id="item.label"
-            :type="item.type"
-            v-model="item.value"
-            :placeholder="item.placeholder"
-            :step="item.step"
-            :min="item.min"
-            :max="item.max"
-          ></b-input>
-        </div>
-        <div v-else class="h-px bg-white w-full" />
-      </div>
+      <time-input :item="item"></time-input></div>
     </div>
 
     <br />
@@ -58,24 +34,34 @@
 <script>
 import calculatedOverTime from "../util/calculateOverTime.js";
 import calculatedEndTime from "../util/calculateEndTime.js";
+import TimeInput from '../components/timeInput.vue';
 export default {
   name: "Home",
+  components: {
+    TimeInput
+  },
   data() {
     return {
       items: [
-        { id: 1, label: "Arbeitsbeginn", type: "time", value: "07:00" },
         {
-          id: 2,
+          id: 0,
+          label: "Arbeitsbeginn",
+          type: "time",
+          value: "07:00",
+          useFormatter: false,
+        },
+        {
+          id: 1,
           label: "Aktuelle Überstunden",
           tooltip:
             "Die Anzahl an Überstunden, die man zu Beginn des Tages gesammelt hat.",
           type: "number",
           value: null,
           placeholder: "0",
-          step: "0.25",
+          useFormatter: true,
         },
         {
-          id: 3,
+          id: 2,
           label: "Soll-Arbeitszeit (Wöchentlich)",
           tooltip: "Netto-Arbeitszeit (Wöchentlich, Soll)",
           type: "number",
@@ -84,20 +70,23 @@ export default {
           step: "0.5",
           min: "1",
           max: "48",
+          useFormatter: false,
         },
         {
-          id: 4,
+          id: 3,
           label: "Pause",
           type: "time",
           value: "00:30",
           placeholder: "0,5",
+          useFormatter: true,
         },
-        { id: 0 },
+        { id: 4, useFormatter: false },
         {
           id: 5,
           label: "Gewünschtes Arbeitsende",
           type: "time",
           value: "16:30",
+          useFormatter: false,
         },
         {
           id: 6,
@@ -105,7 +94,7 @@ export default {
           type: "number",
           value: null,
           placeholder: "0",
-          step: "0.25",
+          useFormatter: true,
         },
       ],
       fields: [
