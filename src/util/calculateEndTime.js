@@ -10,7 +10,7 @@ export default class calculatedEndTime {
 
         //calculate new values
         this.workingTimeDailySoll = transform.twoDeimals(workingTimeSoll / 5) //working time per week divided by 5 days per week
-        this.workingTimeDailyIstNetto = this.workingTimeDailySoll + this.doneOvertime
+        this.workingTimeDailyIstNetto = transform.twoDeimals(this.workingTimeDailySoll + this.doneOvertime)
         //ToDo: mandatory pause must be calculated by the SOLL-working Time per day according to the requirements by law 
         let mandatoryPause = getMandatoryPause((this.workingTimeDailySoll + this.doneOvertime))
         let pause = getPause(pauseInput, mandatoryPause)

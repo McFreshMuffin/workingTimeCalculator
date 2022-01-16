@@ -13,11 +13,11 @@
     </div>
     <div class="text-justify mt-1">
       Die Daten, die in dieser Anwendung eingegeben werden, werden
-      ausschließlich lokal auf Ihrem Endgerät (im local Storage) gespeichert.
+      ausschließlich, und nur nach Ihrer Einwilligung, lokal auf Ihrem Endgerät (im local Storage) gespeichert.
     </div>
     <div class="text-justify mt-1">
-      Sollten Sie Fehler oder Funktionswünsche haben, wenden Sie sich an den
-      Entwickler über die im folgenden angegebene E-Mail Adresse.
+      Sollten Sie Fehler finden oder Funktionswünsche haben, wenden Sie sich an den
+      Entwickler über die im Folgenden angegebene E-Mail Adresse.
     </div>
     <div class="text-xl mt-4 mb-1 underline">App</div>
     <div>

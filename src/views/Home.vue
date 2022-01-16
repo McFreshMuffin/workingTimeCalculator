@@ -127,7 +127,9 @@ export default {
   },
   computed: {
     getCalculatedValues: function () {
-      this.setValues()
+      if (this.$store.state.valuesSaveStatus) {
+        this.setValues();
+      }
       const overTime = new calculatedOverTime(
         this.items[0].value,
         this.items[1].value,
