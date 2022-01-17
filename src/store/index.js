@@ -16,7 +16,13 @@ const defaultSaveState = {
 export default new Vuex.Store({
   state: {
     valuesSaveStatus: false,
-    saveState: defaultSaveState
+    saveState: defaultSaveState,
+    useTimeFormat: {
+      tableTimeFormat: false,
+      actualOvertimeTimeFormat: false,
+      pauseTimeFormat: false,
+      overTimeTimeFormat: false
+    }
   },
   mutations: {
     setValuesSaveStatus(state, value) {
@@ -27,6 +33,9 @@ export default new Vuex.Store({
     },
     setSaveState(state, object) {
       state.saveState = object
+    },
+    changeTimeFormat(state, object) {
+      state.useTimeFormat[object.key] = object.value
     }
   },
   actions: {

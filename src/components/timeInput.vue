@@ -49,12 +49,18 @@ export default {
         this.icon = "clock";
       }
     },
+
   },
   created() {
     if (this.item.type == "number") {
       this.icon = "clock";
     } else if (this.item.type == "time") {
       this.icon = "calculator";
+    }
+    if (this.item.useFormatter) {
+      if (this.$store.state.useTimeFormat[this.item.key + 'TimeFormat']) {
+        this.changeType()
+      }
     }
   },
   computed: {
