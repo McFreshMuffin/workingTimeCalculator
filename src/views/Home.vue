@@ -35,6 +35,8 @@
 import calculatedOverTime from "../util/calculateOverTime.js";
 import calculatedEndTime from "../util/calculateEndTime.js";
 import TimeInput from '../components/timeInput.vue';
+import {defaultItem, defaultFields} from '../util/defaultValues.js'
+import {numberToTime} from '../util/transformators.js'
 export default {
   name: "Home",
   components: {
@@ -42,82 +44,8 @@ export default {
   },
   data() {
     return {
-      items: [
-        {
-          id: 0,
-          label: "Arbeitsbeginn",
-          key: 'startTime',
-          type: "time",
-          value: "07:00",
-          useFormatter: false,
-        },
-        {
-          id: 1,
-          label: "Aktuelle Überstunden",
-          key: 'actualOvertime',
-          tooltip:
-            "Die Anzahl an Überstunden, die man zu Beginn des Tages gesammelt hat.",
-          type: "number",
-          value: null,
-          placeholder: "0",
-          useFormatter: true,
-        },
-        {
-          id: 2,
-          label: "Soll-Arbeitszeit (Wöchentlich)",
-          key: 'workingTimeDailySoll',
-          tooltip: "Netto-Arbeitszeit (Wöchentlich, Soll)",
-          type: "number",
-          value: 40,
-          placeholder: "38,5",
-          step: "0.5",
-          min: "1",
-          max: "48",
-          useFormatter: false,
-        },
-        {
-          id: 3,
-          label: "Pause",
-          key: 'pause',
-          type: "time",
-          value: "00:30",
-          placeholder: "0,5",
-          useFormatter: true,
-        },
-        { id: 4, useFormatter: false },
-        {
-          id: 5,
-          label: "Gewünschtes Arbeitsende",
-          key: 'endTime',
-          type: "time",
-          value: "16:30",
-          useFormatter: false,
-        },
-        {
-          id: 6,
-          label: "Gewünschte Überstunden",
-          key: 'overTime',
-          type: "number",
-          value: null,
-          placeholder: "0",
-          useFormatter: true,
-        },
-      ],
-      fields: [
-        { key: "newLabel", label: "" },
-        {
-          key: "value1",
-          label: "Überstunden",
-          tooltip:
-            "Die Überstunden werden anhand des gewünschten Arbeitsende berechnet.",
-        },
-        {
-          key: "value2",
-          label: "Abmelden",
-          tooltip:
-            "Das Arbeitsende wird anhand der gewünschten Überstunden berechnet.",
-        },
-      ],
+      items: defaultItem,
+      fields: defaultFields,
     };
   },
   computed: {
@@ -145,18 +73,18 @@ export default {
           label: "Aktuelle Überstunden",
           tooltip:
             "Die Anzahl an Überstunden, die man zu Beginn des Tages gesammelt hat.",
-          value1: overTime.actualOvertime,
+          value1: this.chooseFormat(overTime.actualOvertime),
         },
         {
           label: "Soll-Arbeitszeit",
           tooltip: "Netto-Arbeitszeit (Täglich, Soll)",
-          value1: overTime.workingTimeDailySoll,
+          value1: this.chooseFormat(overTime.workingTimeDailySoll),
         },
         {
           label: "Ist-Arbeitszeit",
           tooltip: "Netto-Arbeitszeit (Täglich, Ist)",
-          value1: overTime.workingTimeDailyIstNetto,
-          value2: endTime.workingTimeDailyIstNetto,
+          value1: this.chooseFormat(overTime.workingTimeDailyIstNetto),
+          value2: this.chooseFormat(endTime.workingTimeDailyIstNetto),
         },
         {
           label: "Pausenzeit",
@@ -170,8 +98,8 @@ export default {
         {
           label: "Überstunden",
           tooltip: "Die Überstunden, die heute geleistet wurden.",
-          value1: overTime.doneOvertime,
-          value2: endTime.doneOvertime,
+          value1: this.chooseFormat(overTime.doneOvertime),
+          value2: this.chooseFormat(endTime.doneOvertime),
           _cellVariants: { value1: "success" },
         },
         {
@@ -182,8 +110,8 @@ export default {
         },
         {
           label: "Gesamte Überstunden",
-          value1: overTime.overTime,
-          value2: endTime.overTime,
+          value1: this.chooseFormat(overTime.overTime),
+          value2: this.chooseFormat(endTime.overTime),
         },
       ];
     },
@@ -211,6 +139,13 @@ export default {
         });
       }
     },
+    chooseFormat: function(val) {
+      if (this.$store.state.useTimeFormat.tableTimeFormat) {
+        return numberToTime(val)
+      } else {
+        return val
+      }
+    }
   },
 };
 </script>
