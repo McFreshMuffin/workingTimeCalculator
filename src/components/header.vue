@@ -36,15 +36,14 @@ export default {
 </script>
 
 <style>
-.btn {
-  border: unset !important;
-  padding: unset !important;
-}
 .btn-secondary-new:hover {
   background-color: unset !important;
 }
 .btn-secondary-new {
   background-color: unset !important;
+  border: unset !important;
+  padding: unset !important;
+  background-color: #00669B !important;
 }
 .dropdown-menu-right {
   right: 0;

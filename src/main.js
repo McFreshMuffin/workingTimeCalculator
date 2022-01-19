@@ -8,7 +8,9 @@ import {
   IconsPlugin,
   FormInputPlugin,
   TablePlugin,
-  VBTooltipPlugin
+  VBTooltipPlugin,
+  InputGroupPlugin,
+  ButtonPlugin
  } from 'bootstrap-vue'
 
 // Import Bootstrap an BootstrapVue CSS files (order is important)
@@ -22,6 +24,8 @@ Vue.use(IconsPlugin)
 Vue.use(FormInputPlugin)
 Vue.use(TablePlugin)
 Vue.use(VBTooltipPlugin)
+Vue.use(InputGroupPlugin)
+Vue.use(ButtonPlugin)
 
 
 //Tailwind CSS
