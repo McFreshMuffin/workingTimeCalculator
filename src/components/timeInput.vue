@@ -91,3 +91,8 @@ export default {
   },
 };
 </script>
+<style>
+.input-group-append {
+  margin-left: -3px !important;
+}
+</style>

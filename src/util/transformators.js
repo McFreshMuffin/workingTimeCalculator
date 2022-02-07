@@ -4,15 +4,19 @@ function transformTimeToNumber(string) {
 }
 
 function transformNumberToTime(numb) {
-    let hour = parseInt(numb).toString()
-    let minuits = Math.round((parseFloat(numb) - parseInt(numb)) * 60).toString()
-    if (hour.length == 1) {
+    let hour = Math.abs(parseInt(numb)).toString()
+    let minuits = Math.abs(Math.round((parseFloat(numb) - parseInt(numb)) * 60)).toString()
+    if (hour.length === 1) {
         hour = "0" + hour
     }
-    if (minuits.length == 1) {
+    if (minuits.length === 1) {
         minuits = "0" + minuits
     }
-    return hour + ":" + minuits
+    if (numb > 0) {
+        return hour + ":" + minuits
+    } else {
+        return "- " + hour + ":" + minuits
+    }
 }
 
 function roundNumberToTwoDecimals(numb) {
