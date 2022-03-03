@@ -12,7 +12,7 @@ function transformNumberToTime(numb) {
     if (minuits.length === 1) {
         minuits = "0" + minuits
     }
-    if (numb > 0) {
+    if (numb >= 0) {
         return hour + ":" + minuits
     } else {
         return "- " + hour + ":" + minuits
