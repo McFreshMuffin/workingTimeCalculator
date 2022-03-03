@@ -14,7 +14,7 @@ export const defaultItem = [
         tooltip:
             "Die Anzahl an Überstunden, die man zu Beginn des Tages gesammelt hat.",
         type: "number",
-        value: null,
+        value: "00:00",
         placeholder: "0",
         useFormatter: true,
     },
@@ -54,7 +54,7 @@ export const defaultItem = [
         label: "Gewünschte Überstunden",
         key: 'overTime',
         type: "number",
-        value: null,
+        value: "00:00",
         placeholder: "0",
         useFormatter: true,
     },
