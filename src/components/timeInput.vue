@@ -20,7 +20,7 @@
           :max="item.max"
         ></b-input>
         <b-input-group-append v-if="item.useFormatter">
-          <b-button @click="changeType"><b-icon :icon="icon" class="h-5" /></b-button>
+          <b-button @click="changeType" class="h-full"><b-icon :icon="icon"/></b-button>
         </b-input-group-append>
       </b-input-group>
     </div>
