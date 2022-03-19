@@ -20,7 +20,9 @@
           :max="item.max"
         ></b-input>
         <b-input-group-append v-if="item.useFormatter">
-          <b-button @click="changeType" class="h-full"><b-icon :icon="icon"/></b-button>
+          <b-button @click="changeType" class="h-full"
+            ><b-icon :icon="icon"
+          /></b-button>
         </b-input-group-append>
       </b-input-group>
     </div>
@@ -58,8 +60,8 @@ export default {
       this.icon = "calculator";
     }
     if (this.item.useFormatter) {
-      if (this.$store.state.useTimeFormat[this.item.key + 'TimeFormat']) {
-        this.changeType()
+      if (this.$store.state.useTimeFormat[this.item.key + "TimeFormat"]) {
+        this.changeType();
       }
     }
   },

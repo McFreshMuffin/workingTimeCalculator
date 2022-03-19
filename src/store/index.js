@@ -1,8 +1,5 @@
-import Vue from 'vue'
 import Vuex from 'vuex'
 import createPersistedState from "vuex-persistedstate";
-
-Vue.use(Vuex)
 
 const defaultSaveState = {
   startTime: "07:30",
@@ -13,7 +10,7 @@ const defaultSaveState = {
   doneOvertime: 0.25
 }
 
-export default new Vuex.Store({
+export default Vuex.createStore({
   state: {
     valuesSaveStatus: false,
     saveState: defaultSaveState,
@@ -43,4 +40,4 @@ export default new Vuex.Store({
   modules: {
   },
   plugins: [createPersistedState()],
-})
+});
