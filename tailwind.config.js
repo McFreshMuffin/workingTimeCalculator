@@ -9,13 +9,13 @@ module.exports = {
   },
   variants: {},
   plugins: [],
-  purge: {
-    enabled: true,
-    mode: 'all',
-    preserveHtmlElements: false,
-    content: ['./src/**/*.vue'],
-    options: {
-      keyframes: true
-    }
-  }
+  // purge: {
+  //   enabled: true,
+  //   mode: 'all',
+  //   preserveHtmlElements: false,
+  //   content: ['./src/**/*.vue'],
+  //   options: {
+  //     keyframes: true
+  //   }
+  // }
 }

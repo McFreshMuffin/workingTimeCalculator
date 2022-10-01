@@ -30,6 +30,14 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ```
 bootstrap-vue
 npm install -D tailwindcss@npm:@tailwindcss/postcss7-compat @tailwindcss/postcss7-compat postcss@^7 autoprefixer@^9
+npm i --save @fortawesome/vue-fontawesome@latest
+
+npm i --save @fortawesome/fontawesome-svg-core
+npm i --save @fortawesome/free-solid-svg-icons
+npm i --save @fortawesome/free-brands-svg-icons
+npm i --save @fortawesome/free-regular-svg-icons
+npm i --save @fortawesome/vue-fontawesome
+npm i --save @fortawesome/vue-fontawesome@prerelease
 ```
 
 

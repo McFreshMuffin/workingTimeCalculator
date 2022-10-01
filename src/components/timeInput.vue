@@ -14,6 +14,7 @@
           :id="item.label"
           :type="type"
           v-model="formatted"
+          @input="$emit('valueChange', $event.target.value)"
           :placeholder="item.placeholder"
           :step="item.step"
           :min="item.min"
@@ -51,7 +52,6 @@ export default {
         this.icon = "clock";
       }
     },
-
   },
   created() {
     if (this.item.type == "number") {
@@ -79,15 +79,18 @@ export default {
         }
       },
       set(newVal) {
-          if (this.item.type == this.type) {
-        this.item.value = newVal;
-              } else {
-                  if (this.type == 'number') {
-                      this.item.value = transform.numberToTime(newVal)
-                  } else {
-                      this.item.value = transform.timeToNumber(newVal)
-                  }
-              }
+        if (this.item.type == this.type) {
+          // this.item.value = newVal;
+          this.$emit('vlaueChange', newVal)
+        } else {
+          if (this.type == "number") {
+            this.$emit('vlaueChange', transform.numberToTime(newVal))
+            // this.item.value = transform.numberToTime(newVal);
+          } else {
+            this.$emit('vlaueChange', transform.timeToNumber(newVal))
+            // this.item.value = transform.timeToNumber(newVal);
+          }
+        }
       },
     },
   },

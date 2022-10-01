@@ -25,6 +25,7 @@ body,
   width: 100%;
   background-color: #2c3e50;
   color: white;
+  margin: 0 !important;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
