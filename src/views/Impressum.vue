@@ -5,8 +5,8 @@
     <h2 class="mt-3 text-xl mb-1">Angaben gem&auml;&szlig; &sect; 5 TMG</h2>
     <p>
       Markus Scheuring<br />
-      Meininger Landstra&szlig;e 17<br />
-      97638 Mellrichstadt
+      Am Sonnenhang 16<br />
+      97273 Kürnach
     </p>
 
     <h2 class="mt-3 text-xl mb-1">Kontakt</h2>

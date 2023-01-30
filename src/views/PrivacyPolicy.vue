@@ -124,8 +124,8 @@
     </p>
     <p>
       Markus Scheuring<br />
-      Meininger Landstra&szlig;e 17<br />
-      97638 Mellrichstadt
+      Am Sonnenhang 16<br />
+      97273 Kürnach
     </p>
 
     <p>
